@@ -13,7 +13,7 @@ typedef struct
 }t_entrada;
 
 //declaramos funciones para usar segun lo que elija el usuario(menu)
-t_entrada entrada;
+t_entrada cargarEntrada;
 void ejecutarMenu();
 void agregarRegistro();
 void listarTodo();
@@ -114,7 +114,7 @@ void agregarRegistro()
     }else
     {
         // si no hay error !=NULL, piod los datos
-        t_entrada leoRegistro = cargarEntrada; // es la estructura y la variable q cree para leer registro por registro y la funcionpara carfgar
+        t_entrada leoRegistro = cargarEntrada(); // es la estructura y la variable q cree para leer registro por registro y la funcionpara carfgar
         fprintf(archivo, "%s %c %d %.2f %d\n",
             nuevoRegistro.nombreEvento,// aca guardamos uno por uno separados por un espacio, es para guardar la info para q no se pierda ciuando se cierra elprograma sino q se escriba en el archivo
             nuevoRegistro.sector,
@@ -129,21 +129,21 @@ void agregarRegistro()
 void listarTodo()
 {
     FILE* archivo;
-t_entrada leoRegistro; // creo una nueva variable para leer cada registro
+    t_entrada leoRegistro; // creo una nueva variable para leer cada registro
+    archivo=fopen("entrada.txt","r"); //abrimos el archivo d txt y r porq es para lectura
     if (archivo==NULL) //compruebo asi siempre si hubo algun errror
     {
         printf("error, se abrio mal el archivo");
     }else if (archivo!=NULL)
     {
+        while (fread(&leoRegistro, sizeof(t_entrada), 1, archivo)==1){// mientras fread pueda leer 1 registro lo imprime
         printf("Evento: %s, Sector: %c, Asiento: %d, Precio: %f,Pagada? %d\n",
                            leoRegistro.nombreEvento, leoRegistro.sector, leoRegistro.numAsiento, leoRegistro.precio, leoRegistro.estaPagada);
     }
-
-
+fclose(archivo); //siempre cerrar el archivo si esq lo abrimos
+}
 }
 int main(){
-    t_entrada entrada;
-    entrada = cargarEntrada();
     ejecutarMenu();
    return 0;
 }
