@@ -79,22 +79,22 @@ void ejecutarMenu()
         switch (opcion)
         {
         case 1:
-            agregarRegistro;
+            agregarRegistro();
             break;
         case 2:
-            listarTodo;
+            listarTodo();
             break;
         case 3:
-            listarPorCondicion;
+            listarPorCondicion();
             break;
         case 4:
-            buscarPorNombre;
+            buscarPorNombre();
             break;
         case 5:
-            dividrArchivoBool;
+            dividrArchivoBool();
             break;
         case 6:
-            salir;
+            salir();
             break;
         default:
             printf("opcion no valida, solo numeros del 1 al 6\n");
@@ -102,6 +102,45 @@ void ejecutarMenu()
         }// del switch
     }while (opcion!=6);
 }// de la funcion
+
+//aca ptrimero va la funcion de agregarRegistro
+void agregarRegistro()
+{
+    FILE* archivo; //declaro el puntero para manejar elarchivo
+    archivo=fopen("entrada.txt","a"); //para q abra el archivo y la  a es para agregar/append
+    if (archivo==NULL)
+    {
+        printf("error, se abrio mal el archivo");
+    }else
+    {
+        // si no hay error !=NULL, piod los datos
+        t_entrada leoRegistro = cargarEntrada; // es la estructura y la variable q cree para leer registro por registro y la funcionpara carfgar
+        fprintf(archivo, "%s %c %d %.2f %d\n",
+            nuevoRegistro.nombreEvento,// aca guardamos uno por uno separados por un espacio, es para guardar la info para q no se pierda ciuando se cierra elprograma sino q se escriba en el archivo
+            nuevoRegistro.sector,
+            nuevoRegistro.numAsiento,
+            nuevoRegistro.precio,
+            nuevoRegistro.estaPagada);
+
+        fclose(archivo);
+    }
+}
+
+void listarTodo()
+{
+    FILE* archivo;
+t_entrada leoRegistro; // creo una nueva variable para leer cada registro
+    if (archivo==NULL) //compruebo asi siempre si hubo algun errror
+    {
+        printf("error, se abrio mal el archivo");
+    }else if (archivo!=NULL)
+    {
+        printf("Evento: %s, Sector: %c, Asiento: %d, Precio: %f,Pagada? %d\n",
+                           leoRegistro.nombreEvento, leoRegistro.sector, leoRegistro.numAsiento, leoRegistro.precio, leoRegistro.estaPagada);
+    }
+
+
+}
 int main(){
     t_entrada entrada;
     entrada = cargarEntrada();
