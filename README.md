@@ -13,3 +13,9 @@ primeros avances:
 - declaracion de todas las funciones a usar (pedidas por consigna)
 - funcion terminada de ejecutar menu (menu cn switch)
 - validaciones en la carga de datos.
+
+10/10
+-funcion de agregarRegistro lista 
+- funcion de listarTodo incompleta por el momento
+- corregimos errores
+- falta llamar en el main las dos funciones mencionadas
