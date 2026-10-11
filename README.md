@@ -14,7 +14,8 @@ primeros avances:
 - funcion terminada de ejecutar menu (menu cn switch)
 - validaciones en la carga de datos.
 
-10/10
+10/10:
+
 -funcion de agregarRegistro lista 
 - funcion de listarTodo incompleta por el momento
 - corregimos errores
