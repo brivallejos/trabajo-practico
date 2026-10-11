@@ -19,4 +19,8 @@ primeros avances:
 -funcion de agregarRegistro lista 
 - funcion de listarTodo incompleta por el momento
 - corregimos errores
-- falta llamar en el main las dos funciones mencionadas
+
+11/10:
+
+- correcion d errores d ayer
+- completadas las dos funciones de ayer
