@@ -13,7 +13,7 @@ typedef struct
 }t_entrada;
 
 //declaramos funciones para usar segun lo que elija el usuario(menu)
-t_entrada cargarEntrada;
+t_entrada cargarEntrada();
 void ejecutarMenu();
 void agregarRegistro();
 void listarTodo();
@@ -107,7 +107,7 @@ void ejecutarMenu()
 void agregarRegistro()
 {
     FILE* archivo; //declaro el puntero para manejar elarchivo
-    archivo=fopen("entrada.txt","a"); //para q abra el archivo y la  a es para agregar/append
+    archivo=fopen("entrada.txt","a"); //para q abra el archivo y la  a es para agregar/append, o es .dat(?
     if (archivo==NULL)
     {
         printf("error, se abrio mal el archivo");
@@ -142,6 +142,71 @@ void listarTodo()
     }
 fclose(archivo); //siempre cerrar el archivo si esq lo abrimos
 }
+}
+
+void listarPorCondicion() // void porq no devuelve nada dsp
+{
+    FILE* archivo; //puntero FILE para manejar el archivo
+    t_entrada leoRegistro;
+    int contador=0;
+    archivo=fopen("entrada.txt","r");
+    if (archivo==NULL)
+    {
+        printf("error, se abrio mal el archivo");
+    }
+    else
+    {
+while (fread(&LeoRegistro, sizeof(t_entrada), 1, archivo)==1)
+{
+    if (LeoRegistro.sector == V)
+    {
+        printf("Evento: %s, Asiento: %d, Precio: %.2f\n", leoRegistro.nombreEvento, leoRegistro.numAsiento, leoRegistro.precio);
+        contador++;
+    }else if (contador==0){
+        printf("No se encontraron entradas VIP");
+    }
+}
+        fclose(archivo);
+    }
+}//funcion
+void buscarPorNombre()
+{
+    FILE* archivo;
+    t_entrada leoRegistro;
+    int encontrado=0; //inicio el contador en c
+    char buscar[50]; //arreglo para guarda rel nombre del evento
+
+    printf("Ingrese el nombre del evento a buscar:");
+    fflush(stdin);
+    gets(buscar);//no m convence esto
+
+    archivo=fopen("entrada.txt","r");//eswto tampoco, chat mdice q esto tendria q ser dat
+    if (archivo==NULL)
+    {
+        printf("error, se abrio mal el archivo");
+    }
+    else
+    {
+        while (fread(&leoRegistro, sizeof(t_entrada), 1, archivo) == 1)
+        {
+            if (strcasecmp(leoRegistro.nombreEvento, buscar) == 0)
+            {
+                printf("Evento: %s, Sector: %c, Asiento: %d, Pagada: %d\n", leoRegistro.nombreEvento, leoRegistro.sector, leoRegistro.numAsiento, leoRegistro.estaPagada);
+                encontrado = 1;
+            }
+        }
+        if (encontrado == 0)
+        {
+            printf("No se encontro ningun evento.\n");
+        }
+        fclose(archivo);
+    }
+
+}
+//aca falta una funcin antes
+void salir()
+{
+    printf("elegiste la opcion para salri del sietma");
 }
 int main(){
     ejecutarMenu();
