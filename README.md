@@ -24,3 +24,8 @@ primeros avances:
 
 - correcion d errores d ayer
 - completadas las dos funciones de ayer
+
+
+15/10
+- agregue ultimas funciones
+- falta solo 1 y resolver algunos errores de tipeo
