@@ -203,6 +203,9 @@ void buscarPorNombre()
     }
 
 }
+
+
+
 //aca falta una funcin antes
 void salir()
 {
