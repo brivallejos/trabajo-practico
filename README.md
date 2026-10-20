@@ -29,3 +29,7 @@ primeros avances:
 15/10
 - agregue ultimas funciones
 - falta solo 1 y resolver algunos errores de tipeo
+
+20/10 
+-se corrigieron errores de tipeo en variables y funciones
+- se agrego la ult funcion q faltaba.
