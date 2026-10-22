@@ -107,7 +107,7 @@ void ejecutarMenu()
     } while (opcion != 6);
 } // de la funcion
 
-// aca primero va la funcion de agregarRegistro
+
 void agregarRegistro()
 {
     FILE* archivo; // declaro el puntero para manejar el archivo
