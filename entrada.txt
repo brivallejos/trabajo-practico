@@ -1,3 +1,5 @@
 bri V 12 345.00 1
 alfin G 1 789.00 0
 pude V 1234 678990.00 1
+flamengo V 1 782.00 1
+estudiantes G 3 123.00 0
